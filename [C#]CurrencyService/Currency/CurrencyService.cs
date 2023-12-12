@@ -1,14 +1,11 @@
-﻿using CurrencyService;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System.Net;
 
-namespace Lyten.Currency
+namespace CurrencyService.Currency
 {
-    public class CurrencyService<Type> : VariableType<Type> where Type : IComparable, IComparable<Type>, IConvertible, IEquatable<Type>, IFormattable
+    internal class CurrencyService<Type> : VariableType<Type> where Type : IComparable, IComparable<Type>, IConvertible, IEquatable<Type>, IFormattable
     {
-        public string? NameCurrency { get; private set; }
         private Type _currentValue;
-
         public Type CurrentValue
         {
             get => _currentValue;
@@ -29,11 +26,11 @@ namespace Lyten.Currency
                 }
             }
         }
-
-        public Type MaxValue { get; private set; }
-        public Type MinValue { get; private set; }
         public EventHandler<CurrencyServiceEventArgs<Type>> OnChangedCurrency = delegate { };
         public List<Transaction<Type>> Transactions = new List<Transaction<Type>>();
+        public string NameCurrency { get; private set; }
+        public Type MaxValue { get; private set; }
+        public Type MinValue { get; private set; }
 
         public CurrencyService(Type currentValue, Type maxValue)
         {
@@ -55,25 +52,49 @@ namespace Lyten.Currency
 
         private void OnChangedMoney(object? sender, CurrencyServiceEventArgs<Type> e)
         {
-            using WebClient client = new WebClient();
-            string locationInfoJson = client.DownloadString("http://ipinfo.io/json");
+            using (WebClient webClient = new())
+            {
+                JObject jsonResponse = JObject.Parse(webClient.DownloadString("http://ipinfo.io/json"));
 
-            JObject jsonResponse = JObject.Parse(locationInfoJson);
-            string city = jsonResponse["city"].ToString();
-            string region = jsonResponse["region"].ToString();
-            string postal = jsonResponse["postal"].ToString();
+                TryGetString(jsonResponse, "city", out string city);
+                TryGetString(jsonResponse, "region", out string region);
+                TryGetString(jsonResponse, "postal", out string postal);
 
-            Transactions.Add(new Transaction<Type>(
-                NameCurrency, 
-                Transactions[Transactions.Count-1].Id+1, 
-                $"{Dns.GetHostEntry(Dns.GetHostName()).AddressList[0].ToString()}", 
-                city, 
-                region, 
-                postal,
-                e.NewValue,
-                e.OldValue,
-                CurrentValue));
-            Console.WriteLine(Transactions[Transactions.Count - 1]);
+                if (!string.IsNullOrEmpty(NameCurrency))
+                {
+                    Transactions.Add(new Transaction<Type>(NameCurrency,
+                                                           Transactions[Transactions.Count - 1].Id + 1,
+                                                           $"{Dns.GetHostEntry(Dns.GetHostName()).AddressList[0]}",
+                                                           city,
+                                                           region,
+                                                           postal,
+                                                           e.NewValue,
+                                                           e.OldValue,
+                                                           CurrentValue));
+                    Console.WriteLine(Transactions[Transactions.Count - 1]);
+                }
+            }
+        }
+
+        public bool TryGetString(JObject keyValues, string key, out string value)
+        {
+            if (!string.IsNullOrEmpty(key))
+            {
+                if (keyValues.TryGetValue(key, StringComparison.CurrentCulture, out JToken? token))
+                {
+                    value = token.ToString();
+                    return true;
+                }
+                else
+                {
+                    value = string.Empty;
+                    return false;
+                }
+            }
+            else
+            {
+                throw new Exception("No valid key.");
+            }
         }
 
         public Type Set(Type value)

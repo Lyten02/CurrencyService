@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Hkn14Kj/HzRUzPWv7PGS4lqWujTgPzrt5iCYi9UmCUxIrza9RxOvkmUxGLW+u3lZsIrC1oG4AhpwGaObqOMEsg==",
+  "dgSpecHash": "Xm6DTrOu6Sz/Jv954nnpfGZIZfQ43HcB6EAEyo+zhuOOitUJW/3Cy0gzLVoeO9vhtfjWNpW0TvXhFtckPUcifA==",
   "success": true,
-  "projectFilePath": "E:\\LYTEN\\Programing\\C#\\C# Projects and Others\\Projects\\CurrencyService\\CurrencyService.csproj",
+  "projectFilePath": "E:\\LYTEN\\Programing\\C#\\GitProject\\[GIT]CurrencyService\\[C#]CurrencyService\\CurrencyService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LYTEN\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],

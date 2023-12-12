@@ -1,8 +1,10 @@
-﻿namespace Lyten.Currency
+﻿using CurrencyService.Currency;
+
+namespace Lyten.Currency.Example
 {
     public class Example
     {
-        public static void Main(string[] args)
+        private static void Main()
         {
             CurrencyService<decimal> nfCoins = new("NexFixelCoin", 10, 99999);
             nfCoins.Add(10);

@@ -1,8 +1,6 @@
-﻿using CurrencyService;
-
-namespace Lyten.Currency
+﻿namespace CurrencyService.Currency
 {
-    public class CurrencyServiceEventArgs<Type> : EventArgs, VariableType<Type> where Type : IComparable, IComparable<Type>, IConvertible, IEquatable<Type>, IFormattable
+    internal class CurrencyServiceEventArgs<Type> : EventArgs, VariableType<Type> where Type : IComparable, IComparable<Type>, IConvertible, IEquatable<Type>, IFormattable
     {
         public CurrencyService<Type> Service { get; private set; }
         public Type OldValue { get; private set; }

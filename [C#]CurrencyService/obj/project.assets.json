@@ -60,11 +60,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\LYTEN\\Programing\\C#\\C# Projects and Others\\Projects\\CurrencyService\\CurrencyService.csproj",
+      "projectUniqueName": "E:\\LYTEN\\Programing\\C#\\GitProject\\[GIT]CurrencyService\\[C#]CurrencyService\\CurrencyService.csproj",
       "projectName": "CurrencyService",
-      "projectPath": "E:\\LYTEN\\Programing\\C#\\C# Projects and Others\\Projects\\CurrencyService\\CurrencyService.csproj",
+      "projectPath": "E:\\LYTEN\\Programing\\C#\\GitProject\\[GIT]CurrencyService\\[C#]CurrencyService\\CurrencyService.csproj",
       "packagesPath": "C:\\Users\\LYTEN\\.nuget\\packages\\",
-      "outputPath": "E:\\LYTEN\\Programing\\C#\\C# Projects and Others\\Projects\\CurrencyService\\obj\\",
+      "outputPath": "E:\\LYTEN\\Programing\\C#\\GitProject\\[GIT]CurrencyService\\[C#]CurrencyService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\LYTEN\\AppData\\Roaming\\NuGet\\NuGet.Config",

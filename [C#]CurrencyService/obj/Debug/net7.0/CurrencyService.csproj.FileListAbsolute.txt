@@ -30,3 +30,39 @@ E:\LYTEN\Programing\C#\C# Projects and Others\Projects\CurrencyService\obj\Debug
 E:\LYTEN\Programing\C#\C# Projects and Others\Projects\CurrencyService\bin\Debug\net7.0\Newtonsoft.Json.dll
 E:\LYTEN\Programing\C#\C# Projects and Others\Projects\CurrencyService\obj\Debug\net7.0\CurrencyService.csproj.AssemblyReference.cache
 E:\LYTEN\Programing\C#\C# Projects and Others\Projects\CurrencyService\obj\Debug\net7.0\CurrencyService.csproj.CopyComplete
+E:\LYTEN\Programing\C#\C# Projects and Others\CurrencyService\[C#]CurrencyService\bin\Debug\net7.0\CurrencyService.exe
+E:\LYTEN\Programing\C#\C# Projects and Others\CurrencyService\[C#]CurrencyService\bin\Debug\net7.0\CurrencyService.deps.json
+E:\LYTEN\Programing\C#\C# Projects and Others\CurrencyService\[C#]CurrencyService\bin\Debug\net7.0\CurrencyService.runtimeconfig.json
+E:\LYTEN\Programing\C#\C# Projects and Others\CurrencyService\[C#]CurrencyService\bin\Debug\net7.0\CurrencyService.dll
+E:\LYTEN\Programing\C#\C# Projects and Others\CurrencyService\[C#]CurrencyService\bin\Debug\net7.0\CurrencyService.pdb
+E:\LYTEN\Programing\C#\C# Projects and Others\CurrencyService\[C#]CurrencyService\bin\Debug\net7.0\Newtonsoft.Json.dll
+E:\LYTEN\Programing\C#\C# Projects and Others\CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.csproj.AssemblyReference.cache
+E:\LYTEN\Programing\C#\C# Projects and Others\CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.GeneratedMSBuildEditorConfig.editorconfig
+E:\LYTEN\Programing\C#\C# Projects and Others\CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.AssemblyInfoInputs.cache
+E:\LYTEN\Programing\C#\C# Projects and Others\CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.AssemblyInfo.cs
+E:\LYTEN\Programing\C#\C# Projects and Others\CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.csproj.CoreCompileInputs.cache
+E:\LYTEN\Programing\C#\C# Projects and Others\CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.sourcelink.json
+E:\LYTEN\Programing\C#\C# Projects and Others\CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.csproj.CopyComplete
+E:\LYTEN\Programing\C#\C# Projects and Others\CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.dll
+E:\LYTEN\Programing\C#\C# Projects and Others\CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\refint\CurrencyService.dll
+E:\LYTEN\Programing\C#\C# Projects and Others\CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.pdb
+E:\LYTEN\Programing\C#\C# Projects and Others\CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.genruntimeconfig.cache
+E:\LYTEN\Programing\C#\C# Projects and Others\CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\ref\CurrencyService.dll
+E:\LYTEN\Programing\C#\GitProject\[GIT]CurrencyService\[C#]CurrencyService\bin\Debug\net7.0\CurrencyService.exe
+E:\LYTEN\Programing\C#\GitProject\[GIT]CurrencyService\[C#]CurrencyService\bin\Debug\net7.0\CurrencyService.deps.json
+E:\LYTEN\Programing\C#\GitProject\[GIT]CurrencyService\[C#]CurrencyService\bin\Debug\net7.0\CurrencyService.runtimeconfig.json
+E:\LYTEN\Programing\C#\GitProject\[GIT]CurrencyService\[C#]CurrencyService\bin\Debug\net7.0\CurrencyService.dll
+E:\LYTEN\Programing\C#\GitProject\[GIT]CurrencyService\[C#]CurrencyService\bin\Debug\net7.0\CurrencyService.pdb
+E:\LYTEN\Programing\C#\GitProject\[GIT]CurrencyService\[C#]CurrencyService\bin\Debug\net7.0\Newtonsoft.Json.dll
+E:\LYTEN\Programing\C#\GitProject\[GIT]CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.csproj.AssemblyReference.cache
+E:\LYTEN\Programing\C#\GitProject\[GIT]CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.GeneratedMSBuildEditorConfig.editorconfig
+E:\LYTEN\Programing\C#\GitProject\[GIT]CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.AssemblyInfoInputs.cache
+E:\LYTEN\Programing\C#\GitProject\[GIT]CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.AssemblyInfo.cs
+E:\LYTEN\Programing\C#\GitProject\[GIT]CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.csproj.CoreCompileInputs.cache
+E:\LYTEN\Programing\C#\GitProject\[GIT]CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.sourcelink.json
+E:\LYTEN\Programing\C#\GitProject\[GIT]CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.csproj.CopyComplete
+E:\LYTEN\Programing\C#\GitProject\[GIT]CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.dll
+E:\LYTEN\Programing\C#\GitProject\[GIT]CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\refint\CurrencyService.dll
+E:\LYTEN\Programing\C#\GitProject\[GIT]CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.pdb
+E:\LYTEN\Programing\C#\GitProject\[GIT]CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\CurrencyService.genruntimeconfig.cache
+E:\LYTEN\Programing\C#\GitProject\[GIT]CurrencyService\[C#]CurrencyService\obj\Debug\net7.0\ref\CurrencyService.dll
