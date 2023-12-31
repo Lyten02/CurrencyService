@@ -1,130 +1,113 @@
-﻿using Newtonsoft.Json.Linq;
-using System.Net;
+﻿using System.Diagnostics;
 
 namespace CurrencyService.Currency
 {
-    internal class CurrencyService<Type> : VariableType<Type> where Type : IComparable, IComparable<Type>, IConvertible, IEquatable<Type>, IFormattable
+    public class CurrencyService<T> : VariableType<T> where T : IComparable, IComparable<T>, IConvertible, IEquatable<T>, IFormattable
     {
-        private Type _currentValue;
-        public Type CurrentValue
+        public EventHandler<CurrencyServiceEventArgs<T>> OnChangedCurrency = delegate { };
+        public string? NameCurrency { get; private set; }
+        public T? MaxValue { get; private set; }
+        public T? MinValue { get; private set; }
+        private T? _currentValue;
+        public T? CurrentValue
         {
             get => _currentValue;
             set
             {
-                Type oldValue = _currentValue;
-                _currentValue = value;
-                if (_currentValue.CompareTo((dynamic)oldValue) != 0)
+                T? oldValue = CurrentValue;
+                _currentValue = value ?? throw new ArgumentNullException(nameof(value));
+                if (!Equals(CurrentValue, oldValue))
                 {
-                    if (_currentValue.CompareTo(MaxValue) > 0)
-                        _currentValue = MaxValue;
+                    Clamp();
 
-                    if (_currentValue.CompareTo(default) < 0)
-                        _currentValue = MinValue;
-
-                    var args = new CurrencyServiceEventArgs<Type>(this, oldValue, _currentValue);
+                    var args = new CurrencyServiceEventArgs<T>(this, oldValue ?? throw new ArgumentNullException(nameof(oldValue)), _currentValue ?? throw new ArgumentNullException(nameof(CurrentValue)));
                     OnChangedCurrency?.Invoke(this, args);
                 }
             }
         }
-        public EventHandler<CurrencyServiceEventArgs<Type>> OnChangedCurrency = delegate { };
-        public List<Transaction<Type>> Transactions = new List<Transaction<Type>>();
-        public string NameCurrency { get; private set; }
-        public Type MaxValue { get; private set; }
-        public Type MinValue { get; private set; }
 
-        public CurrencyService(Type currentValue, Type maxValue)
+        // Transactions
+
+        public List<Transaction<T>> Transactions = new()
+        {
+            new Transaction<T>("Create Currency", 0, "Null", "Null", "Null", "Null", default, default, default),
+        };
+
+        public CurrencyService(T currentValue, T maxValue)
         {
             NameCurrency = null;
             MaxValue = maxValue;
             CurrentValue = currentValue;
-            OnChangedCurrency += OnChangedMoney;
+            Subscribe();
         }
-
-        public CurrencyService(string nameCurrency, Type currentValue, Type maxValue)
+        public CurrencyService(string nameCurrency, T currentValue, T maxValue)
         {
             NameCurrency = nameCurrency;
             MaxValue = maxValue;
             CurrentValue = currentValue;
+            Subscribe();
+        }
+
+        private void Subscribe()
+        {
             OnChangedCurrency += OnChangedMoney;
-            Transactions.Add(new Transaction<Type>("Null", 0, "Null", "Null", "Null", "Null", CurrentValue, CurrentValue, CurrentValue));
         }
 
-
-        private void OnChangedMoney(object? sender, CurrencyServiceEventArgs<Type> e)
+        private void OnChangedMoney(object? sender, CurrencyServiceEventArgs<T> e)
         {
-            using (WebClient webClient = new())
-            {
-                JObject jsonResponse = JObject.Parse(webClient.DownloadString("http://ipinfo.io/json"));
-
-                TryGetString(jsonResponse, "city", out string city);
-                TryGetString(jsonResponse, "region", out string region);
-                TryGetString(jsonResponse, "postal", out string postal);
-
-                if (!string.IsNullOrEmpty(NameCurrency))
-                {
-                    Transactions.Add(new Transaction<Type>(NameCurrency,
-                                                           Transactions[Transactions.Count - 1].Id + 1,
-                                                           $"{Dns.GetHostEntry(Dns.GetHostName()).AddressList[0]}",
-                                                           city,
-                                                           region,
-                                                           postal,
-                                                           e.NewValue,
-                                                           e.OldValue,
-                                                           CurrentValue));
-                    Console.WriteLine(Transactions[Transactions.Count - 1]);
-                }
-            }
+            Transaction<T>.OnChangedMoney(this, sender, e);
         }
 
-        public bool TryGetString(JObject keyValues, string key, out string value)
+        private void Clamp()
         {
-            if (!string.IsNullOrEmpty(key))
-            {
-                if (keyValues.TryGetValue(key, StringComparison.CurrentCulture, out JToken? token))
-                {
-                    value = token.ToString();
-                    return true;
-                }
-                else
-                {
-                    value = string.Empty;
-                    return false;
-                }
-            }
-            else
-            {
-                throw new Exception("No valid key.");
-            }
+            if (_currentValue?.CompareTo(MaxValue) > 0)
+                _currentValue = MaxValue;
+
+            if (_currentValue?.CompareTo(default) < 0)
+                _currentValue = MinValue;
         }
 
-        public Type Set(Type value)
+        #region Operators
+        public static CurrencyService<T> operator +(CurrencyService<T> currencyService, T value)
         {
-            CurrentValue = value;
-            return CurrentValue;
+            currencyService.Add(value);
+            return currencyService;
         }
-
-        public Type Add(Type value)
+        public static CurrencyService<T> operator -(CurrencyService<T> currencyService, T value)
+        {
+            currencyService.Subtract(value);
+            return currencyService;
+        }
+        public static CurrencyService<T> operator /(CurrencyService<T> currencyService, T value)
+        {
+            currencyService.Divide(value);
+            return currencyService;
+        }
+        public static CurrencyService<T> operator *(CurrencyService<T> currencyService, T value)
+        {
+            currencyService.Multiply(value);
+            return currencyService;
+        }
+        private T Add(T value)
         {
             CurrentValue += (dynamic)value;
             return CurrentValue;
         }
-
-        public Type Subtract(Type value)
+        public T Subtract(T value)
         {
             CurrentValue = CurrentValue - (dynamic)value;
             return CurrentValue;
         }
-
-        public Type Divide(Type value)
+        public T Divide(T value)
         {
             CurrentValue = CurrentValue / (dynamic)value;
             return CurrentValue;
         }
-
-        public Type Multiply(Type value)
+        public T Multiply(T value)
         {
             CurrentValue = CurrentValue * (dynamic)value;
             return CurrentValue;
         }
+        #endregion
     }
 }

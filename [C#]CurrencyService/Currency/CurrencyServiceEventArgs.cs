@@ -1,12 +1,12 @@
 ﻿namespace CurrencyService.Currency
 {
-    internal class CurrencyServiceEventArgs<Type> : EventArgs, VariableType<Type> where Type : IComparable, IComparable<Type>, IConvertible, IEquatable<Type>, IFormattable
+    public class CurrencyServiceEventArgs<T> : EventArgs, VariableType<T> where T : IComparable, IComparable<T>, IConvertible, IEquatable<T>, IFormattable
     {
-        public CurrencyService<Type> Service { get; private set; }
-        public Type OldValue { get; private set; }
-        public Type NewValue { get; private set; }
+        public CurrencyService<T> Service { get; private set; }
+        public T OldValue { get; private set; }
+        public T NewValue { get; private set; }
 
-        public CurrencyServiceEventArgs(CurrencyService<Type> service, Type oldValue, Type newValue)
+        public CurrencyServiceEventArgs(CurrencyService<T> service, T oldValue, T newValue)
         {
             Service = service;
             OldValue = oldValue;
