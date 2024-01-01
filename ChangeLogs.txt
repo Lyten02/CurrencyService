@@ -1,0 +1,27 @@
+[ENG]
+## [1.0.0] - 2024-01-01
+
+### Project Structure Changes
+- Reorganized project files.
+- Added ignoring of temporary and auxiliary project files.
+
+### Bug Fixes
+- Resolved issues with enumerable types, ensuring compatibility with all numbers generic types.
+
+### Test Additions
+- Introduced tests for standard types.
+- Added negative tests to identify potential issues.
+[RUS]
+## [1.0.0] - 2024-01-01
+
+### Изменения в структуре проекта
+- Переорганизация файлов проекта.
+- Добавлено игнорирование временных и вспомогательных файлов проекта.
+
+### Исправления
+- Исправлены проблемы с типами в перечислениях, теперь они обобщены для всех числовых generic-типов.
+
+### Добавлены тесты
+- Добавлены тесты для стандартных типов.
+- Внедрены негативные тесты для выявления возможных проблем.
+
