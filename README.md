@@ -4,6 +4,8 @@
 
 Подробнее о лицензии можно прочитать [здесь](https://creativecommons.org/licenses/).
 
-Info:
+## Info:
+
 Test Platform ---> Windows
+
 Target ---> .NET 8.0
