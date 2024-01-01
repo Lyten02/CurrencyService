@@ -7,10 +7,12 @@
 
 ### Bug Fixes
 - Resolved issues with enumerable types, ensuring compatibility with all numbers generic types.
+- Add string literal in transaction.
 
 ### Test Additions
 - Introduced tests for standard types.
 - Added negative tests to identify potential issues.
+
 [RUS]
 ## [1.0.0] - 2024-01-01
 
@@ -20,8 +22,11 @@
 
 ### Исправления
 - Исправлены проблемы с типами в перечислениях, теперь они обобщены для всех числовых generic-типов.
+- Добавлен строковый литерал в транзакции для удобства редактирования.
 
 ### Добавлены тесты
 - Добавлены тесты для стандартных типов.
 - Внедрены негативные тесты для выявления возможных проблем.
+
+
 
