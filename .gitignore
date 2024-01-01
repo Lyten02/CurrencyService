@@ -3,7 +3,9 @@
 *.user
 *.userosscache
 *.sln.docstates
+obj
 bin
+.vs
 
 # User-specific files (Mono)
 *.userprefs
