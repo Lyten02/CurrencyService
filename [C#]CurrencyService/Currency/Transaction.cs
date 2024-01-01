@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Net;
+using System.Numerics;
 
 namespace CurrencyService.Currency
 {
-    public class Transaction<T> : VariableType<T> where T : IComparable, IComparable<T>, IConvertible, IEquatable<T>, IFormattable
+    public class Transaction<T> : VariableType<T> where T : INumber<T>
     {
         public string? Name { get; private set; }
         public ulong Id { get; private set; }

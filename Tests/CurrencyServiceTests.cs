@@ -841,5 +841,42 @@ namespace Tests
             // Assert
             Assert.AreEqual(expected, value);
         }
+
+        [TestMethod]
+        public void Int_NegativeCurrentValueCheck()
+        {
+            // Arrange
+            int maxValue = 100;
+            int currentValue = -10; // Negative value
+            int expected = 0; // Expecting the value to be clamped to the minimum
+
+            // Act
+            CurrencyService<int> currencyService = new(currentValue, maxValue);
+
+            // Assert
+            Assert.AreEqual(expected, currencyService.CurrentValue);
+        }
+
+        [TestMethod]
+        public void Double_NegativeMaxValueCheck()
+        {
+            // Arrange
+            double currentValue = 10.0;
+            double maxValue = -10.0;
+
+            // Act & Assert
+            Assert.IsTrue(double.IsPositiveInfinity(new CurrencyService<double>(currentValue, maxValue).MaxValue));
+        }
+
+        [TestMethod]
+        public void Float_InvalidOperationCheck()
+        {
+            // Arrange
+            float currentValue = 10.0f;
+            float maxValue = -10.0f;
+
+            // Act & Assert
+            Assert.IsTrue(float.IsPositiveInfinity(new CurrencyService<float>(currentValue, maxValue).MaxValue));
+        }
     }
 }

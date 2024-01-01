@@ -1,8 +1,8 @@
-﻿using System.Diagnostics;
+﻿using System.Numerics;
 
 namespace CurrencyService.Currency
 {
-    public class CurrencyService<T> : VariableType<T> where T : IComparable, IComparable<T>, IConvertible, IEquatable<T>, IFormattable
+    public class CurrencyService<T> : VariableType<T> where T : INumber<T>
     {
         public EventHandler<CurrencyServiceEventArgs<T>> OnChangedCurrency = delegate { };
         public string? NameCurrency { get; private set; }
@@ -36,10 +36,23 @@ namespace CurrencyService.Currency
         public CurrencyService(T currentValue, T maxValue)
         {
             NameCurrency = null;
-            MaxValue = maxValue;
+
+            // Ensure non-negative MaxValue for floating-point types
+            if (typeof(T) == typeof(float) || typeof(T) == typeof(double))
+            {
+                MaxValue = (Comparer<T>.Default.Compare(maxValue, default) < 0) ? (T)Convert.ChangeType(double.PositiveInfinity, typeof(T)) : maxValue;
+            }
+            else
+            {
+                // Ensure non-negative MaxValue for other types
+                MaxValue = (Comparer<T>.Default.Compare(maxValue, default) < 0) ? default : maxValue;
+            }
+
             CurrentValue = currentValue;
             Subscribe();
         }
+
+
         public CurrencyService(string nameCurrency, T currentValue, T maxValue)
         {
             NameCurrency = nameCurrency;
@@ -87,6 +100,24 @@ namespace CurrencyService.Currency
         {
             currencyService.Multiply(value);
             return currencyService;
+        }
+        public static CurrencyService<T> operator ++(CurrencyService<T> currencyService)
+        {
+            currencyService.Add((dynamic)1);
+            return currencyService;
+        }
+        public static CurrencyService<T> operator --(CurrencyService<T> currencyService)
+        {
+            currencyService.Subtract((dynamic)1);
+            return currencyService;
+        }
+        public static bool operator >(CurrencyService<T> currencyService, T value)
+        {
+            return currencyService?.CurrentValue?.CompareTo(value) > 0;
+        }
+        public static bool operator <(CurrencyService<T> currencyService, T value)
+        {
+            return currencyService?.CurrentValue?.CompareTo(value) < 0;
         }
         private T Add(T value)
         {

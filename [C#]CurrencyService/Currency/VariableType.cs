@@ -1,4 +1,7 @@
-﻿namespace CurrencyService.Currency
+﻿using System.Numerics;
+
+namespace CurrencyService.Currency
 {
-    public interface VariableType<T> where T : IComparable, IComparable<T>, IConvertible, IEquatable<T>, IFormattable { }
+    public interface VariableType<T> where T : INumber<T>
+    { }
 }

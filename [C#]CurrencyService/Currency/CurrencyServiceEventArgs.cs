@@ -1,6 +1,8 @@
-﻿namespace CurrencyService.Currency
+﻿using System.Numerics;
+
+namespace CurrencyService.Currency
 {
-    public class CurrencyServiceEventArgs<T> : EventArgs, VariableType<T> where T : IComparable, IComparable<T>, IConvertible, IEquatable<T>, IFormattable
+    public class CurrencyServiceEventArgs<T> : EventArgs, VariableType<T> where T : INumber<T>
     {
         public CurrencyService<T> Service { get; private set; }
         public T OldValue { get; private set; }
