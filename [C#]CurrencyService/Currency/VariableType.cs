@@ -2,6 +2,5 @@
 
 namespace CurrencyService.Currency
 {
-    public interface VariableType<T> where T : INumber<T>
-    { }
+    public interface VariableType<T> where T : INumber<T> { }
 }

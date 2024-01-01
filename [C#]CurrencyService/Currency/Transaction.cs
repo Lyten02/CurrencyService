@@ -43,18 +43,20 @@ namespace CurrencyService.Currency
 
         public override string ToString()
         {
-            return $"\tTransaction #{Id}\n" +
-                $"Name: {Name}\n" +
-                $"Id: {Id}\n" +
-                $"Address: {Address}\n" +
-                $"City: {City}\n" +
-                $"Region: {Region}\n" +
-                $"PostalCode: {PostalCode}\n" +
-                $"TransactionDate: {TransactionDate}\n" +
-                $"\tValues:\n" +
-                $"New: {NewValue}\n" +
-                $"Old: {OldValue}\n" +
-                $"Current: {CurrentValue}";
+            return $"""
+                   {"\t"}Transaction #{Id}
+                   Name: {Name}
+                   Id: {Id}
+                   Address: {Address}
+                   City: {City}
+                   Region: {Region}
+                   PostalCode: {PostalCode}
+                   TransactionDate: {TransactionDate}
+                   {"\t"}Values:
+                   New: {string.Format("{0:0.###}", NewValue)}
+                   Old: {string.Format("{0:0.###}", OldValue)}
+                   Current: {string.Format("{0:0.###}", CurrentValue)};
+                   """;
         }
 
         private static bool TryGetString(JObject keyValues, string key, out string value)
